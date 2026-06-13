@@ -138,7 +138,7 @@ const RegisterPage = () => {
                 <div className="pw-strength">
                   <div className="pw-bars">
                     {[1,2,3,4].map((i) => (
-                      <div key={i} className="pw-bar" style={{ background: i <= pwStrength ? strengthColors[pwStrength] : var(--border) }} />
+                      style={{ background: i <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }}
                     ))}
                   </div>
                   <span style={{ color: strengthColors[pwStrength], fontSize: '.75rem', fontWeight: 600 }}>
