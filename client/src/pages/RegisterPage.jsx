@@ -8,19 +8,19 @@ import { FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import './AuthPages.css';
 
 const RegisterPage = () => {
-  const navigate    = useNavigate();
+  const navigate = useNavigate();
   const { register } = useAuth();
 
-  const [form,     setForm]     = useState({ name: '', email: '', password: '', confirm: '' });
-  const [errors,   setErrors]   = useState({});
-  const [loading,  setLoading]  = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim())  e.name    = 'Full name is required';
-    if (!form.email)        e.email   = 'Email is required';
-    if (!form.password)     e.password= 'Password is required';
+    if (!form.name.trim()) e.name = 'Full name is required';
+    if (!form.email) e.email = 'Email is required';
+    if (!form.password) e.password = 'Password is required';
     if (form.email && !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Enter a valid email';
     if (form.password && form.password.length < 6) e.password = 'Password must be at least 6 characters';
     if (form.password !== form.confirm) e.confirm = 'Passwords do not match';
@@ -51,9 +51,9 @@ const RegisterPage = () => {
   // Password strength indicator
   const strength = (pw) => {
     let s = 0;
-    if (pw.length >= 6)        s++;
-    if (/[A-Z]/.test(pw))     s++;
-    if (/[0-9]/.test(pw))     s++;
+    if (pw.length >= 6) s++;
+    if (/[A-Z]/.test(pw)) s++;
+    if (/[0-9]/.test(pw)) s++;
     if (/[^A-Za-z0-9]/.test(pw)) s++;
     return s;
   };
@@ -134,12 +134,13 @@ const RegisterPage = () => {
                   {showPass ? <FiEyeOff size={16} /> : <FiEye size={16} />}
                 </button>
               </div>
-              {form.password && (
+              {form.password.length > 0 && (
                 <div className="pw-strength">
                   <div className="pw-bars">
-                    {[1,2,3,4].map((i) => (
-                      style={{ background: i <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }}
-                    ))}
+                    <div className="pw-bar" style={{ background: 1 <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }} />
+                    <div className="pw-bar" style={{ background: 2 <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }} />
+                    <div className="pw-bar" style={{ background: 3 <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }} />
+                    <div className="pw-bar" style={{ background: 4 <= pwStrength ? strengthColors[pwStrength] : '#e2e8f0' }} />
                   </div>
                   <span style={{ color: strengthColors[pwStrength], fontSize: '.75rem', fontWeight: 600 }}>
                     {strengthLabels[pwStrength]}
