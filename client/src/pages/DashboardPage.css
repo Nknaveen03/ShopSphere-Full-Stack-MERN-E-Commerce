@@ -1,0 +1,54 @@
+.dashboard-page { padding-bottom: 4rem; }
+.dashboard-layout { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; padding-top: 2rem; align-items: start; }
+
+/* Sidebar */
+.dash-sidebar { position: sticky; top: calc(var(--nav-height) + 1rem); }
+.dash-user-card { display: flex; align-items: center; gap: .85rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem; margin-bottom: .75rem; }
+.dash-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dash-user-card strong { display: block; font-size: .875rem; }
+.dash-user-card span   { font-size: .75rem; color: var(--text-secondary); display: block; margin-top: .1rem; }
+
+.dash-nav { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.dash-nav-item { display: flex; align-items: center; gap: .6rem; width: 100%; padding: .8rem 1.1rem; background: none; border: none; font-size: .875rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: background .15s, color .15s; }
+.dash-nav-item:hover  { background: var(--bg); color: var(--primary); }
+.dash-nav-item.active { background: #eef2ff; color: var(--primary); font-weight: 700; }
+
+/* Content */
+.dash-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dash-card-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); }
+.dash-card-header h3 { font-size: 1rem; }
+.order-count { font-size: .8rem; color: var(--text-secondary); background: var(--bg); padding: .2rem .6rem; border-radius: var(--radius-full); }
+
+/* Profile */
+.profile-view { padding: 1.5rem; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.profile-field span    { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .4px; color: var(--text-muted); margin-bottom: .25rem; }
+.profile-field strong  { font-size: .95rem; }
+.profile-field.full-width { grid-column: 1/-1; }
+.role-badge { padding: .2rem .6rem; border-radius: var(--radius-full); font-size: .75rem; }
+.role-badge.admin { background: #fef3c7; color: #92400e; }
+.role-badge.user  { background: #eef2ff; color: var(--primary); }
+
+.profile-edit-form { padding: 1.5rem; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+/* Orders */
+.orders-list { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.order-card { border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 1.1rem; transition: border-color .15s; }
+.order-card:hover { border-color: var(--primary-light); }
+.order-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: .85rem; }
+.order-id   { display: block; font-size: .85rem; font-weight: 700; font-family: monospace; }
+.order-date { font-size: .78rem; color: var(--text-muted); margin-top: .15rem; }
+.order-status-badge { padding: .25rem .75rem; border-radius: var(--radius-full); font-size: .75rem; font-weight: 700; flex-shrink: 0; }
+.order-items-preview { display: flex; align-items: center; gap: .4rem; margin-bottom: .85rem; flex-wrap: wrap; }
+.order-items-preview img { width: 48px; height: 48px; border-radius: var(--radius-md); object-fit: cover; border: 1px solid var(--border); }
+.more-items { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--bg); border: 1px solid var(--border); font-size: .75rem; font-weight: 700; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; }
+.order-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.order-total { font-size: 1rem; font-weight: 800; }
+
+@media (max-width: 900px) {
+  .dashboard-layout { grid-template-columns: 1fr; }
+  .dash-sidebar     { position: static; }
+  .profile-grid, .form-row-2, .form-row-3 { grid-template-columns: 1fr; }
+}
