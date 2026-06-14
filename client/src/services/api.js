@@ -3,7 +3,7 @@
 // ============================================================
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
 
 // Create axios instance with base URL
 const api = axios.create({
