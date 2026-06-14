@@ -16,7 +16,7 @@ import ProductDetail  from './pages/ProductDetailPage';
 import CartPage       from './pages/CartPage';
 import CheckoutPage   from './pages/CheckoutPage';
 import LoginPage      from './pages/LoginPage';
-import RegisterPage   from './pages/RegisterPage';
+import RegisterPage   from './pages/RegisterPage'; 
 import DashboardPage  from './pages/DashboardPage';
 import OrderDetailPage from './pages/OrderDetailPage';
 import NotFoundPage   from './pages/NotFoundPage';
