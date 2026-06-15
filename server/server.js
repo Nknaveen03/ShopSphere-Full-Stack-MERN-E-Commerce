@@ -16,12 +16,24 @@ connectDB();
 const app = express();
 
 // ─── Middleware ───────────────────────────────────────────
+const allowedOrigins = [
+  'https://shop-sphere-full-stack-mern-e-comme.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
+];
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+  allowedOrigins.push(process.env.CLIENT_URL.replace(/\/$/, '')); // remove trailing slash if any
+}
+
 app.use(cors({
-  origin: [
-    'https://shop-sphere-full-stack-mern-e-comme.vercel.app',
-    'http://localhost:5173',
-    'http://localhost:3000',
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());
