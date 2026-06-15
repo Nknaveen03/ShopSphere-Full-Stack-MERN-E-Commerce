@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>© {year} ShopSphere. All rights reserved. Built with ❤️ using MERN Stack.</p>
+          <p>© {year} ShopSphere. All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
