@@ -1,11 +1,6 @@
-// ============================================================
-// Product Controller
-// ============================================================
+
 const Product = require('../models/Product');
 
-// ─── @desc    Get all products with search, filter, pagination
-// ─── @route   GET /api/products
-// ─── @access  Public
 const getProducts = async (req, res) => {
   try {
     const {
@@ -78,9 +73,6 @@ const getProducts = async (req, res) => {
   }
 };
 
-// ─── @desc    Get featured products
-// ─── @route   GET /api/products/featured
-// ─── @access  Public
 const getFeaturedProducts = async (req, res) => {
   try {
     const products = await Product.find({ isFeatured: true }).limit(8);
@@ -90,9 +82,6 @@ const getFeaturedProducts = async (req, res) => {
   }
 };
 
-// ─── @desc    Get single product by ID
-// ─── @route   GET /api/products/:id
-// ─── @access  Public
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -111,9 +100,6 @@ const getProductById = async (req, res) => {
   }
 };
 
-// ─── @desc    Get all categories
-// ─── @route   GET /api/products/categories
-// ─── @access  Public
 const getCategories = async (req, res) => {
   try {
     const categories = await Product.distinct('category');
@@ -123,9 +109,6 @@ const getCategories = async (req, res) => {
   }
 };
 
-// ─── @desc    Create a product (Admin)
-// ─── @route   POST /api/products
-// ─── @access  Private/Admin
 const createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
@@ -136,9 +119,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-// ─── @desc    Update a product (Admin)
-// ─── @route   PUT /api/products/:id
-// ─── @access  Private/Admin
+
 const updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -152,9 +133,6 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// ─── @desc    Delete a product (Admin)
-// ─── @route   DELETE /api/products/:id
-// ─── @access  Private/Admin
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);

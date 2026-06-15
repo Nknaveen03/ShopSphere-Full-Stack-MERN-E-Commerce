@@ -1,6 +1,3 @@
-// ============================================================
-// Order Routes
-// ============================================================
 const express = require('express');
 const router  = express.Router();
 const { createOrder, getMyOrders, getOrderById, getAllOrders, updateOrderStatus, deleteOrder } = require('../controllers/orderController');

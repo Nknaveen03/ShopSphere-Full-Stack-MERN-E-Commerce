@@ -1,6 +1,3 @@
-// ============================================================
-// App.jsx - Root component with routing
-// ============================================================
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';

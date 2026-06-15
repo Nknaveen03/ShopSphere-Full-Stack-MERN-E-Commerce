@@ -1,10 +1,6 @@
-// ============================================================
-// JWT Authentication Middleware
-// ============================================================
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// ─── Protect routes: verify JWT token ────────────────────
 const protect = async (req, res, next) => {
   let token;
 

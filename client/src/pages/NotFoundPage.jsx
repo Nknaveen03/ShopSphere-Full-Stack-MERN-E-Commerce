@@ -1,6 +1,3 @@
-// ============================================================
-// NotFoundPage - 404
-// ============================================================
 import { Link } from 'react-router-dom';
 import { FiHome, FiShoppingBag } from 'react-icons/fi';
 

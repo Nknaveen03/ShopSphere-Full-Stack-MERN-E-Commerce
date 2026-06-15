@@ -1,12 +1,7 @@
-// ============================================================
-// Cart Controller
-// ============================================================
 const Cart    = require('../models/Cart');
 const Product = require('../models/Product');
 
-// ─── @desc    Get user's cart
-// ─── @route   GET /api/cart
-// ─── @access  Private
+
 const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({ user: req.user._id }).populate(
@@ -25,9 +20,7 @@ const getCart = async (req, res) => {
   }
 };
 
-// ─── @desc    Add item to cart
-// ─── @route   POST /api/cart/add
-// ─── @access  Private
+
 const addToCart = async (req, res) => {
   try {
     const { productId, quantity = 1 } = req.body;
@@ -86,9 +79,6 @@ const addToCart = async (req, res) => {
   }
 };
 
-// ─── @desc    Update cart item quantity
-// ─── @route   PUT /api/cart/update
-// ─── @access  Private
 const updateCartItem = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
@@ -132,9 +122,7 @@ const updateCartItem = async (req, res) => {
   }
 };
 
-// ─── @desc    Remove item from cart
-// ─── @route   DELETE /api/cart/remove/:productId
-// ─── @access  Private
+
 const removeFromCart = async (req, res) => {
   try {
     const { productId } = req.params;
@@ -158,9 +146,7 @@ const removeFromCart = async (req, res) => {
   }
 };
 
-// ─── @desc    Clear entire cart
-// ─── @route   DELETE /api/cart/clear
-// ─── @access  Private
+
 const clearCart = async (req, res) => {
   try {
     await Cart.findOneAndDelete({ user: req.user._id });

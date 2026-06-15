@@ -1,6 +1,3 @@
-// ============================================================
-// AuthContext - Manages user authentication state globally
-// ============================================================
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authAPI } from '../services/api';
 import toast from 'react-hot-toast';
@@ -8,12 +5,12 @@ import toast from 'react-hot-toast';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user,    setUser]    = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // true on initial load
 
   // ─── Load user from localStorage on mount ──────────────
   useEffect(() => {
-    const savedUser  = localStorage.getItem('user');
+    const savedUser = localStorage.getItem('user');
     const savedToken = localStorage.getItem('token');
 
     if (savedUser && savedToken) {

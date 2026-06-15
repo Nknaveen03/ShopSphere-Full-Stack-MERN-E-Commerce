@@ -1,6 +1,3 @@
-// ============================================================
-// Auth Routes
-// ============================================================
 const express = require('express');
 const router  = express.Router();
 const { register, login, getProfile, updateProfile, getAllUsers, deleteUser } = require('../controllers/authController');

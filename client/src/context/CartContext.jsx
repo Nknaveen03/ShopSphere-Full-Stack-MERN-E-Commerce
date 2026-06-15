@@ -1,6 +1,3 @@
-// ============================================================
-// CartContext - Manages shopping cart state globally
-// ============================================================
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { cartAPI } from '../services/api';
 import { useAuth } from './AuthContext';

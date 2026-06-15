@@ -1,6 +1,3 @@
-// ============================================================
-// ProductCard Component
-// ============================================================
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiStar, FiHeart } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';

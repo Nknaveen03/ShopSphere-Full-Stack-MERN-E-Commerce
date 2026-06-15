@@ -1,6 +1,3 @@
-// ============================================================
-// Axios API Service - Centralized HTTP client
-// ============================================================
 import axios from 'axios';
 
 let baseUrl = import.meta.env.VITE_API_URL || 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
@@ -9,13 +6,11 @@ if (baseUrl && !baseUrl.endsWith('/api') && !baseUrl.endsWith('/api/')) {
 }
 const API_URL = baseUrl;
 
-// Create axios instance with base URL
 const api = axios.create({
   baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
-// ─── Request interceptor: attach JWT token ─────────────────
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -27,7 +22,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ─── Response interceptor: handle auth errors ─────────────
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -44,7 +38,6 @@ api.interceptors.response.use(
   }
 );
 
-// ─── Auth API ─────────────────────────────────────────────
 export const authAPI = {
   register: (data)    => api.post('/auth/register', data),
   login:    (data)    => api.post('/auth/login', data),
@@ -52,7 +45,6 @@ export const authAPI = {
   updateProfile: (data) => api.put('/auth/profile', data),
 };
 
-// ─── Products API ─────────────────────────────────────────
 export const productsAPI = {
   getAll:      (params) => api.get('/products', { params }),
   getFeatured: ()       => api.get('/products/featured'),
@@ -60,7 +52,7 @@ export const productsAPI = {
   getCategories: ()     => api.get('/products/categories'),
 };
 
-// ─── Cart API ─────────────────────────────────────────────
+// ─── Cart API 
 export const cartAPI = {
   getCart:     ()             => api.get('/cart'),
   addToCart:   (data)         => api.post('/cart/add', data),
@@ -69,14 +61,14 @@ export const cartAPI = {
   clearCart:   ()             => api.delete('/cart/clear'),
 };
 
-// ─── Orders API ───────────────────────────────────────────
+// ─── Orders API
 export const ordersAPI = {
   create:       (data) => api.post('/orders', data),
   getMyOrders:  ()     => api.get('/orders/my-orders'),
   getById:      (id)   => api.get(`/orders/${id}`),
 };
 
-// ─── Admin API ────────────────────────────────────────────
+// ─── Admin API 
 export const adminAPI = {
   // Stats
   getStats:          () => api.get('/admin/stats'),

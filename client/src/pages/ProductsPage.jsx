@@ -1,6 +1,3 @@
-// ============================================================
-// ProductsPage - Full listing with search, filter, pagination
-// ============================================================
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { productsAPI } from '../services/api';

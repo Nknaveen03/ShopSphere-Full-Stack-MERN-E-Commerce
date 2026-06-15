@@ -1,13 +1,8 @@
-// ============================================================
-// Order Controller
-// ============================================================
 const Order   = require('../models/Order');
 const Cart    = require('../models/Cart');
 const Product = require('../models/Product');
 
-// ─── @desc    Create new order
-// ─── @route   POST /api/orders
-// ─── @access  Private
+
 const createOrder = async (req, res) => {
   try {
     const { shippingAddress, paymentMethod = 'COD' } = req.body;
@@ -82,9 +77,6 @@ const createOrder = async (req, res) => {
   }
 };
 
-// ─── @desc    Get logged-in user's orders
-// ─── @route   GET /api/orders/my-orders
-// ─── @access  Private
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id })
@@ -98,9 +90,6 @@ const getMyOrders = async (req, res) => {
   }
 };
 
-// ─── @desc    Get order by ID
-// ─── @route   GET /api/orders/:id
-// ─── @access  Private
 const getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).populate('user', 'name email');
@@ -124,9 +113,6 @@ const getOrderById = async (req, res) => {
   }
 };
 
-// ─── @desc    Get all orders (Admin)
-// ─── @route   GET /api/orders
-// ─── @access  Private/Admin
 const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({})
@@ -143,9 +129,6 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-// ─── @desc    Update order status (Admin)
-// ─── @route   PUT /api/orders/:id
-// ─── @access  Private/Admin
 const updateOrderStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -186,9 +169,6 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-// ─── @desc    Delete order (Admin)
-// ─── @route   DELETE /api/orders/:id
-// ─── @access  Private/Admin
 const deleteOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);

@@ -1,6 +1,3 @@
-// ============================================================
-// HomePage - Landing page with hero, featured products, categories
-// ============================================================
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { productsAPI } from '../services/api';

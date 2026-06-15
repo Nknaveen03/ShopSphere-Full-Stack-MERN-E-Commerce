@@ -55,7 +55,7 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <FiMapPin />
-                <span>123, MG Road, Bangalore, India</span>
+                <span>123, MG Road, Palacode, India</span>
               </div>
             </div>
           </div>

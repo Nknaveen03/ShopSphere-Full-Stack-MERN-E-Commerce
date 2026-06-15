@@ -1,6 +1,3 @@
-// ============================================================
-// CartPage
-// ============================================================
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { FiTrash2, FiMinus, FiPlus, FiShoppingBag, FiArrowRight, FiTruck } from 'react-icons/fi';
@@ -112,7 +109,7 @@ const CartPage = () => {
               })}
             </div>
 
-            {/* ── Order Summary ──────────────────────────────── */}
+            
             <div className="order-summary">
               <h3>Order Summary</h3>
 

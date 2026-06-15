@@ -1,19 +1,12 @@
-// ============================================================
-// Auth Controller - Register, Login, Profile
-// ============================================================
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// ─── Generate JWT Token ──────────────────────────────────
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   });
 };
 
-// ─── @desc    Register new user
-// ─── @route   POST /api/auth/register
-// ─── @access  Public
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -55,9 +48,7 @@ const register = async (req, res) => {
   }
 };
 
-// ─── @desc    Login user
-// ─── @route   POST /api/auth/login
-// ─── @access  Public
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -66,14 +57,14 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Please provide email and password' });
     }
 
-    // Find user and include password for comparison
+    
     const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Compare passwords
+   
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
@@ -97,9 +88,7 @@ const login = async (req, res) => {
   }
 };
 
-// ─── @desc    Get current user profile
-// ─── @route   GET /api/auth/profile
-// ─── @access  Private
+
 const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -113,9 +102,7 @@ const getProfile = async (req, res) => {
   }
 };
 
-// ─── @desc    Update user profile
-// ─── @route   PUT /api/auth/profile
-// ─── @access  Private
+
 const updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -155,9 +142,7 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// ─── @desc    Get all users (Admin)
-// ─── @route   GET /api/users
-// ─── @access  Private/Admin
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({}).sort({ createdAt: -1 });
@@ -168,9 +153,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// ─── @desc    Delete user (Admin)
-// ─── @route   DELETE /api/users/:id
-// ─── @access  Private/Admin
+
 const deleteUser = async (req, res) => {
   try {
     const userToDelete = await User.findById(req.params.id);

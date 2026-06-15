@@ -1,6 +1,3 @@
-// ============================================================
-// Navbar Component
-// ============================================================
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -13,10 +10,10 @@ const Navbar = () => {
   const { cartCount } = useCart();
   const navigate = useNavigate();
 
-  const [menuOpen,    setMenuOpen]    = useState(false);
-  const [scrolled,    setScrolled]    = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [dropOpen,    setDropOpen]    = useState(false);
+  const [dropOpen, setDropOpen] = useState(false);
 
   // Track scroll for navbar shadow
   useEffect(() => {
@@ -65,7 +62,7 @@ const Navbar = () => {
 
         {/* Desktop Nav Links */}
         <div className="nav-links">
-          <NavLink to="/"        className="nav-link" end>Home</NavLink>
+          <NavLink to="/" className="nav-link" end>Home</NavLink>
           <NavLink to="/products" className="nav-link">Products</NavLink>
         </div>
 
@@ -144,7 +141,7 @@ const Navbar = () => {
             <button type="submit"><FiSearch size={16} /></button>
           </form>
 
-          <NavLink to="/"        onClick={() => setMenuOpen(false)} end>Home</NavLink>
+          <NavLink to="/" onClick={() => setMenuOpen(false)} end>Home</NavLink>
           <NavLink to="/products" onClick={() => setMenuOpen(false)}>Products</NavLink>
 
           {isAuthenticated ? (
@@ -159,7 +156,7 @@ const Navbar = () => {
             </>
           ) : (
             <div className="mobile-auth">
-              <Link to="/login"    className="btn btn-outline btn-full" onClick={() => setMenuOpen(false)}>Login</Link>
+              <Link to="/login" className="btn btn-outline btn-full" onClick={() => setMenuOpen(false)}>Login</Link>
               <Link to="/register" className="btn btn-primary btn-full" onClick={() => setMenuOpen(false)}>Sign Up</Link>
             </div>
           )}
