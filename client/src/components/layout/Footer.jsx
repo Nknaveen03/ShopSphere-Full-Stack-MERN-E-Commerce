@@ -1,6 +1,3 @@
-// ============================================================
-// Footer Component
-// ============================================================
 import { Link } from 'react-router-dom';
 import { FiMail, FiPhone, FiMapPin, FiGithub, FiTwitter, FiInstagram } from 'react-icons/fi';
 import './Footer.css';
@@ -13,7 +10,6 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
 
-          {/* Brand */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo">◈ ShopSphere</Link>
             <p>Your one-stop destination for premium products. Quality, convenience, and unbeatable prices.</p>
@@ -24,7 +20,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul>
@@ -36,7 +31,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Customer Service */}
           <div className="footer-col">
             <h4>Customer Service</h4>
             <ul>
@@ -48,7 +42,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="footer-col">
             <h4>Contact Us</h4>
             <div className="contact-info">

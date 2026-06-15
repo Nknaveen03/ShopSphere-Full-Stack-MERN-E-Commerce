@@ -1,20 +1,15 @@
-// server/routes/seedRoute.js
 const express = require('express');
 const Product = require('../models/Product');
 const User    = require('../models/User');
 
 const router = express.Router();
-
 const sampleProducts = require('../utils/products');
-
 
 router.get('/', async (req, res) => {
   try {
-    // Seed products
     await Product.deleteMany({});
     const inserted = await Product.insertMany(sampleProducts);
 
-    // Seed admin user
     await User.deleteOne({ email: 'admin@shopsphere.com' });
     await User.create({
       name: 'Admin User',

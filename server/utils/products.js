@@ -1,9 +1,5 @@
-// ============================================================
-// Shared Product Catalog - 71 Premium Products
-// ============================================================
 
 module.exports = [
-  // ── 1. Electronics ──────────────────────────────────────────
   {
     title: 'Apple iPhone 15 Pro',
     description: 'The latest iPhone with A17 Pro chip, titanium design, and a 48MP main camera with 5x optical zoom.',
@@ -159,7 +155,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 2. Clothing ─────────────────────────────────────────────
   {
     title: "Men's Classic Oxford Shirt",
     description: 'Premium cotton Oxford shirt with a button-down collar. Perfect for both casual and semi-formal wear.',
@@ -301,7 +296,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 3. Books ────────────────────────────────────────────────
   {
     title: 'Atomic Habits by James Clear',
     description: 'An easy and proven way to build good habits and break bad ones. Tiny changes, remarkable results.',
@@ -429,7 +423,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 4. Home & Garden ────────────────────────────────────────
   {
     title: 'Dyson V15 Detect Vacuum',
     description: 'Dyson\'s most powerful cordless vacuum with laser dust detection. HEPA filtration.',
@@ -557,7 +550,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 5. Sports ──────────────────────────────────────────────
   {
     title: 'Yoga Mat Premium Non-Slip',
     description: 'Eco-friendly TPE yoga mat with alignment lines. Extra thickness for joint cushioning.',
@@ -671,7 +663,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 6. Toys ────────────────────────────────────────────────
   {
     title: 'LEGO Technic Bugatti Bolide',
     description: 'Build the iconic racing car featuring a working suspension and moving V16 engine pistons.',
@@ -785,7 +776,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 7. Beauty ──────────────────────────────────────────────
   {
     title: 'Dyson Airwrap Styler',
     description: 'Style with air, not extreme heat. Complete set for multiple hair types and curls.',
@@ -899,7 +889,6 @@ module.exports = [
     isFeatured: false,
   },
 
-  // ── 8. Automotive ──────────────────────────────────────────
   {
     title: 'Bosch Car Battery Charger',
     description: 'Fully automatic 8-step charger. Safe for all 6V and 12V lead-acid batteries.',
