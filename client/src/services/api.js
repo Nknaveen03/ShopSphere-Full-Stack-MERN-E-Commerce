@@ -3,7 +3,11 @@
 // ============================================================
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
+let baseUrl = import.meta.env.VITE_API_URL || 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
+if (baseUrl && !baseUrl.endsWith('/api') && !baseUrl.endsWith('/api/')) {
+  baseUrl = baseUrl.replace(/\/$/, '') + '/api';
+}
+const API_URL = baseUrl;
 
 // Create axios instance with base URL
 const api = axios.create({
