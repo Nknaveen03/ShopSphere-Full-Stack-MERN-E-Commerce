@@ -227,7 +227,13 @@ const ProductsPage = () => {
             </div>
           ) : (
             <div className="pg-products-grid">
-              {products.map((p) => <ProductCard key={p._id} product={p} />)}
+              {products.map((p, index) => (
+                <ProductCard
+                  key={p._id}
+                  product={p}
+                  className={`stagger-${(index % 12) + 1}`}
+                />
+              ))}
             </div>
           )}
 

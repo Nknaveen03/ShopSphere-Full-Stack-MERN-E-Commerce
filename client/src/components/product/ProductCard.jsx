@@ -21,7 +21,7 @@ const StarRating = ({ rating }) => {
   return <span className="star-row">{stars} <span className="rating-num">{rating?.toFixed(1)}</span></span>;
 };
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, className = '' }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = async (e) => {
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
     : 0;
 
   return (
-    <Link to={`/products/${product._id}`} className="product-card">
+    <Link to={`/products/${product._id}`} className={`product-card animate-fade-slide ${className}`}>
       {/* Image */}
       <div className="product-img-wrap">
         <img

@@ -163,8 +163,12 @@ const HomePage = () => {
             <div className="loading-center"><div className="spinner" /></div>
           ) : (
             <div className="products-grid">
-              {featured.slice(0, 8).map((product) => (
-                <ProductCard key={product._id} product={product} />
+              {featured.slice(0, 8).map((product, index) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  className={`stagger-${(index % 8) + 1}`}
+                />
               ))}
             </div>
           )}

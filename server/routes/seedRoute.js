@@ -33,6 +33,78 @@ const sampleProducts = [
   { title: 'Perfume Woody Oud', price: 2199, category: 'Beauty', brand: 'LensKraft', stock: 40, rating: 4.8, numReviews: 156, description: 'Long-lasting eau de parfum, 100ml', image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400' },
   { title: 'Plant-Based Protein Powder', price: 1899, category: 'Beauty', brand: 'NutriForce', stock: 90, rating: 4.1, numReviews: 203, description: 'Chocolate flavour, 1kg, 25g protein per serving', image: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400' },
   { title: 'Desk Organiser Bamboo', price: 749, category: 'Automotive', brand: 'EcoKitchen', stock: 60, rating: 4.4, numReviews: 156, description: '6-compartment bamboo desk organiser', image: 'https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=400' },
+  {
+    title: 'Apple Watch Series 9',
+    description: 'Smartwatch with powerful S9 SiP, double tap gesture, brighter display, and advanced health sensors.',
+    category: 'Electronics',
+    brand: 'Apple',
+    stock: 30,
+    rating: 4.6,
+    numReviews: 140,
+    price: 41900,
+    image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=400',
+    isFeatured: false
+  },
+  {
+    title: 'Levi\'s 511 Slim Jeans',
+    description: 'A modern slim with room to move. Crafted from premium stretch cotton denim for all-day comfort.',
+    category: 'Clothing',
+    brand: 'Levi\'s',
+    stock: 90,
+    rating: 4.4,
+    numReviews: 310,
+    price: 3299,
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400',
+    isFeatured: false
+  },
+  {
+    title: 'Thinking, Fast and Slow',
+    description: 'Nobel laureate Daniel Kahneman takes us on a tour of the mind, explaining Fast and Slow thinking.',
+    category: 'Books',
+    brand: 'Farrar, Straus and Giroux',
+    stock: 120,
+    rating: 4.8,
+    numReviews: 650,
+    price: 499,
+    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400',
+    isFeatured: false
+  },
+  {
+    title: 'Sony PlayStation 5 Console',
+    description: 'Experience lightning-fast loading with an ultra-high speed SSD, haptic feedback, and adaptive triggers.',
+    category: 'Toys',
+    brand: 'Sony',
+    stock: 12,
+    rating: 4.9,
+    numReviews: 980,
+    price: 54990,
+    image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400',
+    isFeatured: true
+  },
+  {
+    title: 'CeraVe Hydrating Cleanser',
+    description: 'Formulated with three essential ceramides and hyaluronic acid to cleanse and hydrate skin.',
+    category: 'Beauty',
+    brand: 'CeraVe',
+    stock: 140,
+    rating: 4.7,
+    numReviews: 1100,
+    price: 1250,
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400',
+    isFeatured: false
+  },
+  {
+    title: 'Xiaomi Portable Air Pump 1S',
+    description: 'Fast and precise tire inflation. Digitally controlled air pressure sensors improve accuracy.',
+    category: 'Automotive',
+    brand: 'Xiaomi',
+    stock: 65,
+    rating: 4.5,
+    numReviews: 180,
+    price: 2999,
+    image: 'https://images.unsplash.com/photo-1618576725878-fa6c39f150f2?w=400',
+    isFeatured: true
+  }
 ];
 
 router.get('/', async (req, res) => {
