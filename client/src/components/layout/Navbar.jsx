@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch, FiLogOut, FiPackage } from 'react-icons/fi';
+import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch, FiLogOut, FiPackage, FiShield } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -96,6 +96,11 @@ const Navbar = () => {
                   <Link to="/dashboard" className="dropdown-item" onClick={() => setDropOpen(false)}>
                     <FiUser size={15} /> My Dashboard
                   </Link>
+                  {user?.role === 'admin' && (
+                    <Link to="/admin" className="dropdown-item" onClick={() => setDropOpen(false)}>
+                      <FiShield size={15} style={{ color: 'var(--primary)' }} /> Admin Panel
+                    </Link>
+                  )}
                   <Link to="/dashboard?tab=orders" className="dropdown-item" onClick={() => setDropOpen(false)}>
                     <FiPackage size={15} /> My Orders
                   </Link>
@@ -145,6 +150,9 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               <NavLink to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</NavLink>
+              {user?.role === 'admin' && (
+                <NavLink to="/admin" onClick={() => setMenuOpen(false)}>Admin Panel</NavLink>
+              )}
               <button className="mobile-logout" onClick={() => { handleLogout(); setMenuOpen(false); }}>
                 <FiLogOut /> Logout
               </button>

@@ -1,0 +1,178 @@
+/* ============================================================
+   ShopSphere - Admin Order Management CSS
+   ============================================================ */
+
+.pointer {
+  cursor: pointer;
+}
+
+.payment-method-badge {
+  background: #f1f5f9;
+  color: var(--text-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+/* Modal details */
+.order-detail-modal {
+  max-width: 680px;
+}
+
+.scrollable-modal-content {
+  padding: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-sub-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.status-edit-section h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bg-dark);
+  margin-bottom: 0.5rem;
+}
+
+.status-update-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.status-update-row select {
+  flex: 1;
+}
+
+.order-details-grid-modal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-col h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.shipping-box-detail {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.shipping-box-detail strong {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.modal-summary-list {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  font-size: 0.85rem;
+}
+
+.modal-summary-list p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.modal-summary-list p:last-of-type {
+  margin-bottom: 0;
+}
+
+.total-modal-row {
+  font-size: 0.95rem;
+}
+
+.total-modal-row strong {
+  color: var(--primary-dark);
+}
+
+.paid-yes {
+  color: var(--success);
+}
+
+.paid-no {
+  color: var(--danger);
+}
+
+/* Modal Ordered Items */
+.modal-order-items h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.modal-items-list-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.modal-item-row-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.modal-item-row-preview img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.modal-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-item-details span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.modal-item-total {
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .order-details-grid-modal {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

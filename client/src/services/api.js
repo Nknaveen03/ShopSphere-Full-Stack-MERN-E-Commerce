@@ -3,7 +3,7 @@
 // ============================================================
 import axios from 'axios';
 
-const API_URL = 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://shopsphere-full-stack-mern-e-commerce.onrender.com/api';
 
 // Create axios instance with base URL
 const api = axios.create({
@@ -70,6 +70,26 @@ export const ordersAPI = {
   create:       (data) => api.post('/orders', data),
   getMyOrders:  ()     => api.get('/orders/my-orders'),
   getById:      (id)   => api.get(`/orders/${id}`),
+};
+
+// ─── Admin API ────────────────────────────────────────────
+export const adminAPI = {
+  // Stats
+  getStats:          () => api.get('/admin/stats'),
+
+  // Product Management
+  createProduct: (data) => api.post('/products', data),
+  updateProduct: (id, data) => api.put(`/products/${id}`, data),
+  deleteProduct: (id) => api.delete(`/products/${id}`),
+
+  // Order Management
+  getAllOrders:      () => api.get('/orders'),
+  updateOrderStatus: (id, status) => api.put(`/orders/${id}`, { status }),
+  deleteOrder:       (id) => api.delete(`/orders/${id}`),
+
+  // User Management
+  getAllUsers:       () => api.get('/users'),
+  deleteUser:        (id) => api.delete(`/users/${id}`),
 };
 
 export default api;

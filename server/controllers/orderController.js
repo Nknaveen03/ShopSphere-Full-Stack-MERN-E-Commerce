@@ -143,4 +143,66 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-module.exports = { createOrder, getMyOrders, getOrderById, getAllOrders };
+// ─── @desc    Update order status (Admin)
+// ─── @route   PUT /api/orders/:id
+// ─── @access  Private/Admin
+const updateOrderStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+
+    if (!status) {
+      return res.status(400).json({ message: 'Status is required' });
+    }
+
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    const prevStatus = order.status;
+    order.status = status;
+
+    // Auto update flags based on status
+    if (status === 'Delivered') {
+      order.isDelivered = true;
+      order.deliveredAt = Date.now();
+      order.isPaid = true; 
+      order.paidAt = order.paidAt || Date.now();
+    } else if (status === 'Cancelled' && prevStatus !== 'Cancelled') {
+      // If cancelling, restore stock to products
+      for (const item of order.orderItems) {
+        await Product.findByIdAndUpdate(item.product, {
+          $inc: { stock: item.quantity },
+        });
+      }
+    }
+
+    const updatedOrder = await order.save();
+    res.json({ message: `Order updated to ${status}`, order: updatedOrder });
+  } catch (error) {
+    console.error('Update order status error:', error);
+    res.status(500).json({ message: 'Error updating order status' });
+  }
+};
+
+// ─── @desc    Delete order (Admin)
+// ─── @route   DELETE /api/orders/:id
+// ─── @access  Private/Admin
+const deleteOrder = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    await Order.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Order deleted successfully' });
+  } catch (error) {
+    console.error('Delete order error:', error);
+    res.status(500).json({ message: 'Error deleting order' });
+  }
+};
+
+module.exports = { createOrder, getMyOrders, getOrderById, getAllOrders, updateOrderStatus, deleteOrder };

@@ -21,6 +21,12 @@ import DashboardPage  from './pages/DashboardPage';
 import OrderDetailPage from './pages/OrderDetailPage';
 import NotFoundPage   from './pages/NotFoundPage';
 
+// Admin Pages
+import AdminDashboard   from './pages/admin/AdminDashboard';
+import AdminProductList from './pages/admin/AdminProductList';
+import AdminOrderList   from './pages/admin/AdminOrderList';
+import AdminUserList    from './pages/admin/AdminUserList';
+
 // Guard
 import ProtectedRoute from './components/common/ProtectedRoute';
 
@@ -51,6 +57,20 @@ function App() {
               } />
               <Route path="/orders/:id" element={
                 <ProtectedRoute><OrderDetailPage /></ProtectedRoute>
+              } />
+
+              {/* Admin Routes */}
+              <Route path="/admin" element={
+                <ProtectedRoute adminOnly={true}><AdminDashboard /></ProtectedRoute>
+              } />
+              <Route path="/admin/products" element={
+                <ProtectedRoute adminOnly={true}><AdminProductList /></ProtectedRoute>
+              } />
+              <Route path="/admin/orders" element={
+                <ProtectedRoute adminOnly={true}><AdminOrderList /></ProtectedRoute>
+              } />
+              <Route path="/admin/users" element={
+                <ProtectedRoute adminOnly={true}><AdminUserList /></ProtectedRoute>
               } />
 
               {/* 404 */}

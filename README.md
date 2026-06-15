@@ -146,13 +146,15 @@ App runs at `http://localhost:5173`
 
 ## 🔑 API Endpoints
 
-### Auth
+### Auth & User Management
 | Method | Endpoint            | Access  | Description |
 |--------|---------------------|---------|-------------|
 | POST   | /api/auth/register  | Public  | Register new user |
 | POST   | /api/auth/login     | Public  | Login & get token |
 | GET    | /api/auth/profile   | Private | Get own profile |
 | PUT    | /api/auth/profile   | Private | Update profile |
+| GET    | /api/users          | Admin   | Get all registered users |
+| DELETE | /api/users/:id      | Admin   | Delete user account |
 
 ### Products
 | Method | Endpoint              | Access       | Description |
@@ -166,20 +168,24 @@ App runs at `http://localhost:5173`
 | DELETE | /api/products/:id     | Admin        | Delete product |
 
 ### Cart
-| Method | Endpoint               | Access  |
-|--------|------------------------|---------|
-| GET    | /api/cart              | Private |
-| POST   | /api/cart/add          | Private |
-| PUT    | /api/cart/update       | Private |
-| DELETE | /api/cart/remove/:id   | Private |
-| DELETE | /api/cart/clear        | Private |
+| Method | Endpoint               | Access  | Description |
+|--------|------------------------|---------|-------------|
+| GET    | /api/cart              | Private | Get user's cart |
+| POST   | /api/cart/add          | Private | Add product to cart |
+| PUT    | /api/cart/update       | Private | Update item quantity |
+| DELETE | /api/cart/remove/:id   | Private | Remove item from cart |
+| DELETE | /api/cart/clear        | Private | Empty cart |
 
-### Orders
-| Method | Endpoint             | Access  |
-|--------|----------------------|---------|
-| POST   | /api/orders          | Private |
-| GET    | /api/orders/my-orders| Private |
-| GET    | /api/orders/:id      | Private |
+### Orders & Admin Stats
+| Method | Endpoint             | Access  | Description |
+|--------|----------------------|---------|-------------|
+| POST   | /api/orders          | Private | Place new order |
+| GET    | /api/orders/my-orders| Private | View personal orders |
+| GET    | /api/orders/:id      | Private | View order by ID |
+| GET    | /api/orders          | Admin   | View all orders |
+| PUT    | /api/orders/:id      | Admin   | Update order status |
+| DELETE | /api/orders/:id      | Admin   | Delete order entry |
+| GET    | /api/admin/stats     | Admin   | Get overview stats |
 
 ---
 
