@@ -370,3 +370,52 @@
     display: flex;
   }
 }
+
+/* ─── Next Level Dark Mode Overrides & Wishlist ────────────────── */
+:root {
+  --nav-bg: rgba(255, 255, 255, 0.97);
+  --hover-bg: #eef2ff;
+}
+
+body.dark-mode {
+  --nav-bg: rgba(11, 15, 25, 0.85);
+  --hover-bg: rgba(99, 102, 241, 0.15);
+}
+
+.navbar {
+  background: var(--nav-bg) !important;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-icon-btn:hover,
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  background: var(--hover-bg) !important;
+}
+
+.wishlist-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  background: var(--accent);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 700;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.wishlist-icon-btn:hover {
+  color: var(--accent) !important;
+}
+
+body.dark-mode .mobile-search input {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}

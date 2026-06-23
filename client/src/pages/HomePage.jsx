@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { productsAPI } from '../services/api';
 import ProductCard from '../components/product/ProductCard';
+import SkeletonLoader from '../components/common/SkeletonLoader';
 import {
   FiArrowRight, FiShoppingBag, FiTruck, FiShield, FiRefreshCw,
   FiStar, FiZap
@@ -157,7 +158,7 @@ const HomePage = () => {
           </div>
 
           {loading ? (
-            <div className="loading-center"><div className="spinner" /></div>
+            <SkeletonLoader count={4} />
           ) : (
             <div className="products-grid">
               {featured.slice(0, 8).map((product, index) => (

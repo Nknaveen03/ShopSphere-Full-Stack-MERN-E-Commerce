@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { productsAPI } from '../services/api';
 import ProductCard from '../components/product/ProductCard';
+import SkeletonLoader from '../components/common/SkeletonLoader';
 import { FiSearch, FiFilter, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './ProductsPage.css';
 
@@ -212,7 +213,7 @@ const ProductsPage = () => {
 
           {/* Products Grid */}
           {loading ? (
-            <div className="loading-center"><div className="spinner" /></div>
+            <SkeletonLoader count={8} />
           ) : products.length === 0 ? (
             <div className="empty-state">
               <div className="empty-icon">🔍</div>

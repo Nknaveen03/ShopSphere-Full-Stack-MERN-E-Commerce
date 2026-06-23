@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
   const { isAuthenticated } = useAuth();
   const [cart,    setCart]    = useState({ items: [], totalAmount: 0 });
   const [loading, setLoading] = useState(false);
+  const [isCartDrawerOpen, setCartDrawerOpen] = useState(false);
 
   // ─── Fetch cart from server ─────────────────────────────
   const fetchCart = useCallback(async () => {
@@ -39,6 +40,7 @@ export const CartProvider = ({ children }) => {
       const res = await cartAPI.addToCart({ productId, quantity });
       setCart(res.data.cart);
       toast.success('Added to cart! 🛒');
+      setCartDrawerOpen(true);
       return true;
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to add to cart');
@@ -84,6 +86,8 @@ export const CartProvider = ({ children }) => {
     cart,
     loading,
     cartCount,
+    isCartDrawerOpen,
+    setCartDrawerOpen,
     fetchCart,
     addToCart,
     updateQuantity,

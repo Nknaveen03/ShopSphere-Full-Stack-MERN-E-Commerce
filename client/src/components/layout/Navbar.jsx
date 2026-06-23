@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch, FiLogOut, FiPackage, FiShield } from 'react-icons/fi';
+import { useWishlist } from '../../context/WishlistContext';
+import {
+  FiShoppingCart, FiUser, FiMenu, FiX, FiSearch, FiLogOut,
+  FiPackage, FiShield, FiHeart, FiSun, FiMoon
+} from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
-  const { cartCount } = useCart();
+  const { cartCount, setCartDrawerOpen } = useCart();
+  const { wishlist } = useWishlist();
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +20,21 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [dropOpen, setDropOpen] = useState(false);
 
-  // Track scroll for navbar shadow
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark' ||
+    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll);
@@ -41,13 +60,11 @@ const Navbar = () => {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container nav-inner">
 
-        {/* Logo */}
         <Link to="/" className="nav-logo">
           <span className="logo-icon">◈</span>
           ShopSphere
         </Link>
 
-        {/* Desktop Search */}
         <form className="nav-search" onSubmit={handleSearch}>
           <input
             type="text"
@@ -60,19 +77,32 @@ const Navbar = () => {
           </button>
         </form>
 
-        {/* Desktop Nav Links */}
         <div className="nav-links">
           <NavLink to="/" className="nav-link" end>Home</NavLink>
           <NavLink to="/products" className="nav-link">Products</NavLink>
         </div>
 
-        {/* Desktop Actions */}
         <div className="nav-actions">
+          {/* Theme Toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="nav-icon-btn theme-toggle-btn"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+          </button>
+
+          {/* Wishlist */}
+          <Link to="/dashboard?tab=wishlist" className="nav-icon-btn wishlist-icon-btn" aria-label="Wishlist">
+            <FiHeart size={20} />
+            {wishlist.length > 0 && <span className="wishlist-badge">{wishlist.length}</span>}
+          </Link>
+
           {/* Cart */}
-          <Link to="/cart" className="nav-icon-btn" aria-label="Cart">
+          <button onClick={() => setCartDrawerOpen(true)} className="nav-icon-btn" aria-label="Cart">
             <FiShoppingCart size={20} />
             {cartCount > 0 && <span className="cart-badge">{cartCount > 99 ? '99+' : cartCount}</span>}
-          </Link>
+          </button>
 
           {/* User Menu */}
           {isAuthenticated ? (
@@ -92,6 +122,9 @@ const Navbar = () => {
                   </div>
                   <Link to="/dashboard" className="dropdown-item" onClick={() => setDropOpen(false)}>
                     <FiUser size={15} /> My Dashboard
+                  </Link>
+                  <Link to="/dashboard?tab=wishlist" className="dropdown-item" onClick={() => setDropOpen(false)}>
+                    <FiHeart size={15} /> My Wishlist
                   </Link>
                   {user?.role === 'admin' && (
                     <Link to="/admin" className="dropdown-item" onClick={() => setDropOpen(false)}>
@@ -116,12 +149,23 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Actions */}
         <div className="mobile-actions">
-          <Link to="/cart" className="nav-icon-btn" aria-label="Cart">
-            <FiShoppingCart size={20} />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="nav-icon-btn theme-toggle-btn"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
+          </button>
+          <Link to="/dashboard?tab=wishlist" className="nav-icon-btn" aria-label="Wishlist">
+            <FiHeart size={18} />
+            {wishlist.length > 0 && <span className="wishlist-badge">{wishlist.length}</span>}
           </Link>
+          <button onClick={() => setCartDrawerOpen(true)} className="nav-icon-btn" aria-label="Cart">
+            <FiShoppingCart size={18} />
+            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </button>
           <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
@@ -143,6 +187,7 @@ const Navbar = () => {
 
           <NavLink to="/" onClick={() => setMenuOpen(false)} end>Home</NavLink>
           <NavLink to="/products" onClick={() => setMenuOpen(false)}>Products</NavLink>
+          <NavLink to="/dashboard?tab=wishlist" onClick={() => setMenuOpen(false)}>Wishlist</NavLink>
 
           {isAuthenticated ? (
             <>

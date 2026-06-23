@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiStar, FiHeart } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 import './ProductCard.css';
 
 // Format price in Indian Rupees
@@ -20,11 +21,19 @@ const StarRating = ({ rating }) => {
 
 const ProductCard = ({ product, className = '' }) => {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   const handleAddToCart = async (e) => {
     e.preventDefault(); // Don't navigate to product page
     await addToCart(product._id, 1);
   };
+
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    toggleWishlist(product);
+  };
+
+  const isWish = isInWishlist(product._id);
 
   const discount = product.originalPrice > product.price
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -42,8 +51,12 @@ const ProductCard = ({ product, className = '' }) => {
         />
         {discount > 0 && <span className="discount-badge">-{discount}%</span>}
         {product.stock === 0 && <div className="out-of-stock-overlay">Out of Stock</div>}
-        <button className="wishlist-btn" aria-label="Wishlist" onClick={(e) => e.preventDefault()}>
-          <FiHeart size={16} />
+        <button
+          className={`wishlist-btn${isWish ? ' active' : ''}`}
+          aria-label="Wishlist"
+          onClick={handleWishlist}
+        >
+          <FiHeart size={16} fill={isWish ? 'var(--accent)' : 'none'} style={{ color: isWish ? 'var(--accent)' : 'inherit' }} />
         </button>
       </div>
 

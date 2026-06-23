@@ -81,7 +81,7 @@
 }
 
 .dash-nav-item.active {
-  background: #eef2ff;
+  background: var(--hover-bg, #eef2ff);
   color: var(--primary);
   font-weight: 700;
 }

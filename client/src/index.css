@@ -45,6 +45,20 @@
   --radius-full: 9999px;
 }
 
+body.dark-mode {
+  --bg:             #030712;
+  --bg-card:        #0b0f19;
+  --text-primary:   #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted:     #4b5563;
+  --border:         #1f2937;
+  --border-dark:    #374151;
+  --shadow-sm:      0 1px 3px rgba(0,0,0,.5);
+  --shadow-md:      0 4px 6px rgba(0,0,0,.6);
+  --shadow-lg:      0 10px 15px rgba(0,0,0,.7);
+  --shadow-xl:      0 20px 25px rgba(0,0,0,.8);
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -53,7 +67,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card, .navbar, .footer, .feature-item, .category-card, .product-card, .dropdown-item, .dropdown-header, .user-dropdown, .form-control {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
 
 /* ─── Typography ──────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {

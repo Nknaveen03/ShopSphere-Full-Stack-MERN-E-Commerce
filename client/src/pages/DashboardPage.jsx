@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useWishlist } from '../context/WishlistContext';
 import { ordersAPI } from '../services/api';
-import { FiUser, FiPackage, FiEdit2, FiSave, FiX } from 'react-icons/fi';
+import ProductCard from '../components/product/ProductCard';
+import { FiUser, FiPackage, FiEdit2, FiSave, FiX, FiHeart } from 'react-icons/fi';
 import './DashboardPage.css';
 
 const formatPrice = (p) =>
@@ -19,6 +21,7 @@ const STATUS_COLORS = {
 const DashboardPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { user, updateProfile } = useAuth();
+  const { wishlist } = useWishlist();
 
   const tabParam = searchParams.get('tab') || 'profile';
   const [activeTab, setActiveTab] = useState(tabParam);
@@ -92,6 +95,9 @@ const DashboardPage = () => {
           <nav className="dash-nav">
             <button className={`dash-nav-item${activeTab === 'profile' ? ' active' : ''}`} onClick={() => switchTab('profile')}>
               <FiUser /> Profile
+            </button>
+            <button className={`dash-nav-item${activeTab === 'wishlist' ? ' active' : ''}`} onClick={() => switchTab('wishlist')}>
+              <FiHeart /> Wishlist
             </button>
             <button className={`dash-nav-item${activeTab === 'orders' ? ' active' : ''}`} onClick={() => switchTab('orders')}>
               <FiPackage /> My Orders
@@ -229,6 +235,31 @@ const DashboardPage = () => {
                       </div>
                     );
                   })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Wishlist Tab */}
+          {activeTab === 'wishlist' && (
+            <div className="dash-card">
+              <div className="dash-card-header">
+                <h3>My Wishlist</h3>
+                <span className="order-count">{wishlist.length} items</span>
+              </div>
+
+              {wishlist.length === 0 ? (
+                <div className="empty-state">
+                  <div className="empty-icon">❤️</div>
+                  <h3>Your wishlist is empty</h3>
+                  <p>Tap the heart icon on any product to save it here.</p>
+                  <Link to="/products" className="btn btn-primary" style={{ marginTop: '1rem' }}>Browse Products</Link>
+                </div>
+              ) : (
+                <div className="products-grid" style={{ padding: '1rem 0' }}>
+                  {wishlist.map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                  ))}
                 </div>
               )}
             </div>

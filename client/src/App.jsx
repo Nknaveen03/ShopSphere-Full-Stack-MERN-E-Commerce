@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
 
 // Layout
 import Navbar  from './components/layout/Navbar';
 import Footer  from './components/layout/Footer';
+import CartDrawer from './components/cart/CartDrawer';
 
 // Pages
 import HomePage       from './pages/HomePage';
@@ -31,8 +33,10 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <WishlistProvider>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <Navbar />
+          <CartDrawer />
           <main style={{ flex: 1, paddingTop: 'var(--nav-height)' }}>
             <Routes>
               {/* Public Routes */}
@@ -76,6 +80,7 @@ function App() {
           </main>
           <Footer />
         </div>
+        </WishlistProvider>
       </CartProvider>
     </AuthProvider>
   );
