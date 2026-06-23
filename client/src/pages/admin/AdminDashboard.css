@@ -5,7 +5,7 @@
 .admin-layout {
   display: flex;
   min-height: calc(100vh - var(--nav-height));
-  background: #f1f5f9;
+  background: var(--bg);
 }
 
 /* ─── Sidebar Navigation ──────────────────────────────────── */
@@ -97,7 +97,7 @@
 .admin-header h2 {
   font-size: 1.85rem;
   font-weight: 800;
-  color: var(--bg-dark);
+  color: var(--text-primary);
 }
 
 .admin-header p {
@@ -147,7 +147,7 @@
 .stat-card-inner h3 {
   font-size: 1.75rem;
   font-weight: 850;
-  color: var(--bg-dark);
+  color: var(--text-primary);
   margin-top: 0.25rem;
 }
 
@@ -215,7 +215,7 @@
 .admin-card-header h3 {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--bg-dark);
+  color: var(--text-primary);
 }
 
 /* Tables */
@@ -232,8 +232,8 @@
 
 .admin-table th {
   padding: 0.75rem 1rem;
-  background: #f8fafc;
-  color: var(--text-secondary);
+  background: var(--bg);
+  color: var(--text-primary);
   font-weight: 600;
   border-bottom: 1.5px solid var(--border);
 }
@@ -296,7 +296,7 @@
 .cat-progress-bar {
   width: 100%;
   height: 6px;
-  background: #e2e8f0;
+  background: var(--border);
   border-radius: var(--radius-full);
   overflow: hidden;
 }

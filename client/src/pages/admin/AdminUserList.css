@@ -6,7 +6,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #e2e8f0;
+  background: var(--bg);
   color: var(--text-primary);
   font-weight: 700;
   display: flex;
@@ -34,7 +34,7 @@
 
 /* Disabled actions */
 .action-btn.delete:disabled {
-  background: #f1f5f9;
+  background: var(--bg);
   color: var(--text-muted);
   border-color: var(--border);
   cursor: not-allowed;
